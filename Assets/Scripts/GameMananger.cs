@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class GameMananger : MonoBehaviour
 {
+    public int level;
     public Transform Tile;
     public Transform Grid;
     public Transform Border;
@@ -17,23 +18,14 @@ public class GameMananger : MonoBehaviour
     public Player _player2;
     private Vector3 direction;
 
+    public LevelConfig levelConfig;
+
     public PlayerInput playerInput;
 
     public List<Transform> listTile;
     void Start()
     {
-        map = new int[] {
-            9,9,9,9,9,9,9,9,9,9,
-            9,1,1,1,1,1,1,1,1,9,
-            9,1,0,0,0,0,1,1,2,9,
-            9,1,0,0,0,0,1,1,0,9,
-            9,1,0,1,1,1,1,1,0,9,
-            9,1,0,1,1,1,1,1,0,9,
-            9,1,0,1,1,1,0,0,0,9,
-            9,1,0,1,1,1,1,1,0,9,
-            9,1,3,0,0,0,0,0,0,9,
-            9,9,9,9,9,9,9,9,9,9,
-        };
+        map = levelConfig.levelMaps[level].map;
 
         MapSpawn();
     }

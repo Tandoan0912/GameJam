@@ -234,6 +234,7 @@ MonoBehaviour:
   player: {fileID: -321047237620076002, guid: a7cb9ee291bd866498bcdebb665b4596, type: 3}
   _player: {fileID: 0}
   _player2: {fileID: 0}
+  levelConfig: {fileID: 11400000, guid: 23234857ae2d887479af7eb06328b5bb, type: 2}
   playerInput: {fileID: 1366055128}
   listTile: []
 --- !u!4 &689746529
