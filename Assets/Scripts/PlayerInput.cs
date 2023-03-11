@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            tap = true;
+            tap = true;          
             isDragin = true;
             startTouch = Input.mousePosition;
         }
