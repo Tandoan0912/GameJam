@@ -9,6 +9,7 @@ using UnityEngine;
 public class GameMananger : MonoBehaviour
 {
     public int level;
+    public bool isWin;
     public Transform Tile;
     public Transform Grid;
     public Transform Border;
@@ -23,6 +24,8 @@ public class GameMananger : MonoBehaviour
     public PlayerInput playerInput;
 
     public List<Transform> listTile;
+
+    public ParticleSystem endGameEffect;
     void Start()
     {
         map = levelConfig.levelMaps[level].map;
@@ -65,10 +68,15 @@ public class GameMananger : MonoBehaviour
 
     void CheckWin()
     {
-        if(Vector3.Distance(_player.transform.position, _player2.transform.position) <= 0.5f)
+        if (isWin)
+            return;
+        if(Vector3.Distance(_player.transform.position, _player2.transform.position) <= 1f)
         {
-            _player.gameObject.SetActive(false);
-            _player2.gameObject.SetActive(false);
+            isWin = true;
+            _player.GetComponent<Player>().isMove = false;
+            _player2.GetComponent<Player>().isMove = false;
+            endGameEffect.gameObject.SetActive(true);
+            endGameEffect.transform.position = new Vector3((_player.transform.position.x + _player2.transform.position.x) / 2, _player.transform.position.y, (_player.transform.position.z + _player2.transform.position.z) / 2);
         }
     }
 
