@@ -73,10 +73,10 @@ public class GameMananger : MonoBehaviour
 
     void CheckWin()
     {
-        if(Vector3.Distance(_player.transform.position, _player2.transform.position) <= 0.5f)
+        if(Vector3.Distance(_player.transform.position, _player2.transform.position) <= 1f)
         {
-            _player.gameObject.SetActive(false);
-            _player2.gameObject.SetActive(false);
+            _player.GetComponent<Player>().isMove = false;
+            _player2.GetComponent<Player>().isMove = false;
         }
     }
 

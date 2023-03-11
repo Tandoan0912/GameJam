@@ -51,10 +51,10 @@ public class Player : MonoBehaviour
 
     public void Idle(GameObject Dog)
     {
-        Dog.transform.DOScaleY(.5f, 0.5f).OnComplete(() =>
+        Dog.transform.DOScaleY(.56f, 0.25f).OnComplete(() =>
         {
-            Dog1.transform.DOScaleY(.6f, 0.5f);
-        }).SetLoops(-1);
+            Dog1.transform.DOScaleY(.6f, 0.25f);
+        }).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutQuad);
     }
 
     public void GetWayPoint(List<Transform> list)
@@ -98,14 +98,14 @@ public class Player : MonoBehaviour
         var angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
         effectGroup.transform.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(_wayPoint.Last().x, transform.position.y, _wayPoint.Last().y), curSpeed * Time.deltaTime);
-        effect.gameObject.SetActive(true);
+        //effect.gameObject.SetActive(true);
         if (transform.position == new Vector3(_wayPoint.Last().x, transform.position.y, _wayPoint.Last().y))
         {
             isMove = false;
             isCreateNewPath = true;
             curSpeed = 5;
             acceleration = speed;
-            effect.gameObject.SetActive(false);
+            //effect.gameObject.SetActive(false);
         }
     }
 }
